@@ -54,13 +54,13 @@ class SLR_slope_simulator:
             #Calculate relevant p-value
             if sided == "above":
                 bool_prob = self.slopes > value
-                bool_prob.mean()
+                return(bool_prob.mean())
             elif sided == "below":
                 bool_prob = self.slopes < value
-                bool_prob.mean()
+                return(bool_prob.mean())
             elif sided == "two-sided":
                 bool_prob = abs(self.slopes) > value
-                bool_prob.mean()
+                return(bool_prob.mean())
             else: #Return a printed statement
                 print("Please specify a different 'sided' argument. Valid options are 'above', 'below', and 'two-sided'.")
             
@@ -72,6 +72,6 @@ example = SLR_slope_simulator(beta_0 = 12, beta_1 = 2, x = np.array(list(np.lins
 example.plot_sampling_distribution() #Returns a printed error statement
 example.run_simulations(10000)
 example.plot_sampling_distribution() #Works as expected
-example.find_prob(2.1, "two-sided")
+print(example.find_prob(2.1, "two-sided"))
 print(example.slopes)
                             
